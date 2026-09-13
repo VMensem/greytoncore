@@ -56,20 +56,6 @@
             </div>
         </div>
     </div>
-        <script>
-        window.selectBuild = function(card, version, time) {
-            document.querySelectorAll('.build-card').forEach(c => c.classList.remove('active'));
-            card.classList.add('active');
-
-            const versionName = document.getElementById('active-version-name');
-            const versionMain = document.getElementById('active-version-main');
-            const playtime = document.getElementById('active-playtime');
-
-            if (versionName) versionName.textContent = 'Pura';
-            if (versionMain) versionMain.textContent = version;
-            if (playtime) playtime.textContent = 'Наигранное время в игре: ' + time;
-        };
-    </script>
 
     <div class="home-grid mt-24">
         <div class="home-main">
@@ -142,7 +128,7 @@
 
             <div class="card mt-16">
                 <div class="card-header">
-                    <div class="card-title"><img src="assets\statistic.png" alt="Статистика" style="width: 20px; height: 20px;"> Статистика аккаунта</div>
+                    <div class="card-title"><img src="assets/statistic.png" alt="Статистика" style="width: 20px; height: 20px;"> Статистика аккаунта</div>
                 </div>
                 <div class="account-stats-list">
                     <div class="account-stat-row">

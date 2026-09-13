@@ -35,8 +35,10 @@ public class LauncherBridge {
 
     public String loadPageContent(String page) {
         try {
-            java.io.InputStream is = getClass().getResourceAsStream("/web/pages/" + page + ".html");
+            String path = "/web/pages/" + page + ".html";
+            java.io.InputStream is = getClass().getResourceAsStream(path);
             if (is == null) {
+                System.out.println("[LauncherBridge] Resource not found: " + path);
                 return null;
             }
             return new String(is.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);

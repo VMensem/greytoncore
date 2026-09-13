@@ -329,6 +329,7 @@
 
     async function showPage(pageName, updateHash = true) {
         const page = normalizePageName(pageName);
+        console.log(`[PuraLauncher] showPage called for: ${pageName}, normalized: ${page}`);
         const mainContent = byId("main-content");
 
         if (!mainContent) {
@@ -338,13 +339,16 @@
 
         // Try Java Bridge first (more reliable for file:// protocol)
         const bridge = getBridge();
+        console.log(`[PuraLauncher] Bridge available: ${!!bridge}`);
+        
         if (bridge && typeof bridge.loadPageContent === "function") {
             console.log(`[PuraLauncher] Loading via bridge: ${page}`);
             const html = bridge.loadPageContent(page);
+            console.log(`[PuraLauncher] Bridge returned html: ${!!html}`);
             if (html) {
                 mainContent.innerHTML = html;
             } else {
-                mainContent.innerHTML = `<div class="error">Ошибка загрузки страницы (bridge)</div>`;
+                mainContent.innerHTML = `<div class="error">Ошибка загрузки страницы (bridge returned null/empty)</div>`;
             }
         } else {
             // Fallback to fetch
@@ -357,7 +361,7 @@
                 mainContent.innerHTML = html;
             } catch (error) {
                 console.error(`[PuraLauncher] Error during fetch:`, error);
-                mainContent.innerHTML = `<div class="error">Ошибка загрузки страницы (fetch fail)</div>`;
+                mainContent.innerHTML = `<div class="error">Ошибка загрузки страницы (fetch fail: ${error.message})</div>`;
             }
         }
 
@@ -391,23 +395,18 @@
     }
 
     function initNavigation(autoShow = false) {
-        $$("[data-page-link]").forEach(link => {
-            link.addEventListener("click", event => {
+        // Collect all potential navigation buttons
+        const navButtons = $$("[data-page-link], [data-nav]");
+        const processedButtons = new Set();
+
+        navButtons.forEach(button => {
+            if (processedButtons.has(button)) return;
+            processedButtons.add(button);
+
+            button.addEventListener("click", event => {
                 event.preventDefault();
-
-                showPage(
-                    link.dataset.pageLink
-                );
-            });
-        });
-
-        $$("[data-nav]").forEach(link => {
-            link.addEventListener("click", event => {
-                event.preventDefault();
-
-                showPage(
-                    link.dataset.nav
-                );
+                const page = button.dataset.pageLink || button.dataset.nav;
+                showPage(page);
             });
         });
 
@@ -612,7 +611,47 @@
             });
         });
     }
+    
+    // Jopa
 
+    function selectBuild(card, version, time) {
+    $$(".build-card").forEach(element => {
+        element.classList.remove("active");
+    });
+
+    if (card) {
+        card.classList.add("active");
+    }
+
+    state.selectedVersion = `Pura ${version}`;
+
+    setText("active-version-name", "Pura");
+    setText("active-version-main", version);
+    setText(
+        "active-playtime",
+        `Наигранное время в игре: ${time}`
+    );
+
+    const bridge = getBridge();
+
+    if (bridge && typeof bridge.setSelectedVersion === "function") {
+        try {
+            bridge.setSelectedVersion(state.selectedVersion);
+        } catch (error) {
+            console.error(
+                "[PuraLauncher] Ошибка сохранения выбранной версии:",
+                error
+            );
+        }
+    }
+
+    console.log(
+        `[PuraLauncher] Выбрана сборка: ${state.selectedVersion}`
+    );
+}
+
+    window.selectBuild = selectBuild;
+    
     // =========================================================
     // WINDOW CONTROLS
     // =========================================================
