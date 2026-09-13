@@ -612,7 +612,47 @@
             });
         });
     }
+    
+    // Jopa
 
+    function selectBuild(card, version, time) {
+    $$(".build-card").forEach(element => {
+        element.classList.remove("active");
+    });
+
+    if (card) {
+        card.classList.add("active");
+    }
+
+    state.selectedVersion = `Pura ${version}`;
+
+    setText("active-version-name", "Pura");
+    setText("active-version-main", version);
+    setText(
+        "active-playtime",
+        `Наигранное время в игре: ${time}`
+    );
+
+    const bridge = getBridge();
+
+    if (bridge && typeof bridge.setSelectedVersion === "function") {
+        try {
+            bridge.setSelectedVersion(state.selectedVersion);
+        } catch (error) {
+            console.error(
+                "[PuraLauncher] Ошибка сохранения выбранной версии:",
+                error
+            );
+        }
+    }
+
+    console.log(
+        `[PuraLauncher] Выбрана сборка: ${state.selectedVersion}`
+    );
+}
+
+    window.selectBuild = selectBuild;
+    
     // =========================================================
     // WINDOW CONTROLS
     // =========================================================
