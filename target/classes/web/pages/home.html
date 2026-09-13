@@ -1,0 +1,212 @@
+﻿<section id="home" class="page active" data-page="home">
+    <div class="game-header-top">
+        <div class="version-badge">
+            <span class="orange-dot"><img src="assets/settings.png"></span>
+            Minecraft 26.2
+        </div>
+    </div>
+    <div class="game-banner">
+        <div class="game-info">
+            <div class="game-version-name" id="active-version-name">Pura</div>
+            <div class="game-version-main" id="active-version-main">Ultra</div>
+            <div class="game-playtime" id="active-playtime">Наигранное время в игре: 50 ч.</div>
+        </div>
+        <div class="game-actions">
+            <button type="button" class="btn-play-img" id="play-button" data-action="play" onclick="if(window.PuraApp) PuraApp.play(); else if(window.launcher) launcher.play();">
+                <img src="assets/play.png" alt="Play">
+            </button>
+            <button type="button" class="btn-settings" data-action="settings" onclick="if(window.PuraApp) PuraApp.showPage('settings');">
+                <span class="gear-icon"><img src="assets/settings.png" alt="Settings"></span>
+            </button>
+        </div>
+    </div>
+    <div class="optimization-section mt-24">
+        <h2 class="optimization-title">ОПТИМИЗАЦИЯ <span class="pura-text">Pura</span></h2>
+        <p class="optimization-desc">Выбери сборку, которая подходит твоему компьютеру</p>
+        <div class="builds-grid">
+            <div class="build-card active" onclick="selectBuild(this, 'Ultra', '50 ч.')">
+                <div class="build-radio"></div>
+                <div class="orange-dot-large"><img src="assets/ultra.png"></div>
+                <div class="build-content">
+                    <h3 class="build-name">ULTRA</h3>
+                    <p class="build-desc">Максимальная<br>графика и эффекты</p>
+                    <span class="build-badge">Для мощных ПК</span>
+                </div>
+                <div class="build-footer">Шейдеры • Высокие настройки</div>
+            </div>
+            <div class="build-card" onclick="selectBuild(this, 'Plus', '30 ч.')">
+                <div class="build-radio"></div>
+                <div class="orange-dot-large"><img src="assets/plus.png"></div>
+                <div class="build-content">
+                    <h3 class="build-name">PLUS</h3>
+                    <p class="build-desc">Комфортная игра<br>со сбалансированным FPS</p>
+                    <span class="build-badge">Для средних ПК</span>
+                </div>
+                <div class="build-footer">Оптимизация • Баланс</div>
+            </div>
+            <div class="build-card" onclick="selectBuild(this, 'Lite', '10 ч.')">
+                <div class="build-radio"></div>
+                <div class="orange-dot-large"><img src="assets/lite.png"></div>
+                <div class="build-content">
+                    <h3 class="build-name">LITE</h3>
+                    <p class="build-desc">Идеально<br>для слабых ПК</p>
+                    <span class="build-badge">Для слабых ПК</span>
+                </div>
+                <div class="build-footer">Макс. FPS • Низкие настройки</div>
+            </div>
+        </div>
+    </div>
+        <script>
+        window.selectBuild = function(card, version, time) {
+            document.querySelectorAll('.build-card').forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+
+            const versionName = document.getElementById('active-version-name');
+            const versionMain = document.getElementById('active-version-main');
+            const playtime = document.getElementById('active-playtime');
+
+            if (versionName) versionName.textContent = 'Pura';
+            if (versionMain) versionMain.textContent = version;
+            if (playtime) playtime.textContent = 'Наигранное время в игре: ' + time;
+        };
+    </script>
+
+    <div class="home-grid mt-24">
+        <div class="home-main">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title"><img src="assets/statistic.png" alt="Статистика" style="width: 20px; height: 20px;"> Статистика игрока</div>
+                    <a href="#statistics" class="card-action" data-page-link="statistics">Подробнее →</a>
+                </div>
+                <div id="stats-summary" class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><img src="assets/time.png" alt="В игре"></div>
+                        <div class="stat-value" id="stat-playtime">0 ч.</div>
+                        <div class="stat-label">В игре</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><img src="assets/kills.png" alt="Убийств"></div>
+                        <div class="stat-value" id="stat-kills">0</div>
+                        <div class="stat-label">Убийств</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><img src="assets/deaths.png" alt="Смертей"></div>
+                        <div class="stat-value" id="stat-deaths">0</div>
+                        <div class="stat-label">Смертей</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-20">
+                <div class="card-header">
+                    <div class="card-title"><img src="assets/news.png" alt="Новости" style="width: 20px; height: 20px;"> Новости проекта</div>
+                    <a href="#news" class="card-action" data-page-link="news">Все новости →</a>
+                </div>
+                <div id="news-list" class="news-list">
+                    <div class="empty-state">
+                        <div class="empty-icon"><img src="assets/news.png" alt="Новости"></div>
+                        <div class="empty-title">Новостей пока нет</div>
+                        <div class="empty-description">Следите за обновлениями на нашем сервере и в Discord.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="home-side">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title"><img src="assets/profile.png" alt="Профиль" style="width: 20px; height: 20px;"> Профиль</div>
+                    <a href="#profile" class="card-action" data-page-link="profile">Открыть →</a>
+                </div>
+                <div id="profile-status">
+                    <div class="profile-card">
+                        <div class="profile-card-avatar">
+                            <img src="assets/gc-logo.png" alt="Avatar" id="user-avatar">
+                        </div>
+                        <div class="profile-card-info">
+                            <div class="profile-card-name" id="username">Игрок</div>
+                            <div class="profile-card-role" id="user-role">Оффлайн</div>
+                            <div class="profile-card-meta">Уровень: <span id="level-value">1</span></div>
+                        </div>
+                    </div>
+                    <div class="level-card mt-12">
+                        <div class="level-row">
+                            <span class="level-name"><img src="assets/xp.png" alt="Опыт" style="width: 20px; height: 20px;">Опыт (XP)</span>
+                            <span class="level-value"><span id="xp-current">0</span> / <span id="xp-next">100</span></span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" id="xp-progress" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-16">
+                <div class="card-header">
+                    <div class="card-title"><img src="assets\statistic.png" alt="Статистика" style="width: 20px; height: 20px;"> Статистика аккаунта</div>
+                </div>
+                <div class="account-stats-list">
+                    <div class="account-stat-row">
+                        <span class="account-stat-label">Дата регистрации</span>
+                        <span class="account-stat-value" id="acc-registered">—</span>
+                    </div>
+                    <div class="account-stat-row">
+                        <span class="account-stat-label">Последний вход</span>
+                        <span class="account-stat-value" id="acc-last-login">—</span>
+                    </div>
+                    <div class="account-stat-row">
+                        <span class="account-stat-label">Всего сессий</span>
+                        <span class="account-stat-value" id="acc-sessions">—</span>
+                    </div>
+                    <div class="account-stat-row">
+                        <span class="account-stat-label">Ранг</span>
+                        <span class="account-stat-value acc-rank" id="acc-rank">Игрок</span>
+                    </div>
+                    <div class="account-stat-row">
+                        <span class="account-stat-label">Монет</span>
+                        <span class="account-stat-value" id="acc-coins">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-16">
+                <div class="card-header">
+                    <div class="card-title"><img src="assets/news.png" alt="Новости" style="width: 20px; height: 20px;"> Новости</div>
+                    <a href="#news" class="card-action" data-page-link="news">Все →</a>
+                </div>
+                <div class="side-news-list" id="side-news-list">
+                    <div class="side-news-item">
+                        <div class="side-news-dot"></div>
+                        <div class="side-news-text">
+                            <div class="side-news-title">Добро пожаловать в FireWorld!</div>
+                            <div class="side-news-date">FireWorld Team</div>
+                        </div>
+                    </div>
+                    <div class="side-news-item">
+                        <div class="side-news-dot"></div>
+                        <div class="side-news-text">
+                            <div class="side-news-title">Pura Launcher 1.0.1</div>
+                            <div class="side-news-date">Pura Team</div>
+                        </div>
+                    </div>
+                    <div class="side-news-item">
+                        <div class="side-news-dot"></div>
+                        <div class="side-news-text">
+                            <div class="side-news-title">Обновление сервера</div>
+                            <div class="side-news-date">FireWorld Team</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-16">
+                <div class="card-header">
+                    <div class="card-title">🔥 FireWorld</div>
+                </div>
+                <div class="settings-description">
+                    <div>Адрес: <strong style="color: var(--accent-color);">fireworld.me</strong></div>
+                    <div class="mt-8">Версия сервера: <strong>26.2 Fabric</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

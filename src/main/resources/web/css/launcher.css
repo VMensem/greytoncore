@@ -1,0 +1,97 @@
+/* Refined Pura Launcher UI with Integrated Styles */
+@font-face {
+    font-family: 'Minecraft';
+    src: url('/minecraft.ttf');
+}
+
+.root {
+    -fx-font-family: 'Minecraft', "Segoe UI", sans-serif;
+    -fx-background-color: #312D2C;
+}
+
+.shell {
+    -fx-background-color: #312D2C;
+}
+
+/* Custom Title Bar */
+.title-bar {
+    -fx-background-color: #1A1817;
+    -fx-padding: 5 15;
+    -fx-alignment: center-right;
+}
+
+.title-logo {
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;
+}
+
+.title-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-font-size: 16px;
+    -fx-padding: 0 10;
+}
+.title-btn:hover { -fx-background-color: #444; -fx-background-radius: 5px; }
+
+/* Sidebar */
+.sidebar {
+    -fx-background-color: #2C2928;
+    -fx-border-color: #433E3D;
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 20 0;
+}
+
+.brand {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-padding: 0 20 20 20;
+    -fx-font-weight: bold;
+}
+
+.menu-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ccc;
+    -fx-padding: 12 20;
+    -fx-cursor: hand;
+    -fx-background-radius: 8px;
+}
+.menu-btn:hover { -fx-background-color: #3A3534; -fx-text-fill: white; }
+.menu-btn.active { -fx-background-color: #5AA94D; -fx-text-fill: white; }
+
+/* Cards & Elements */
+.card {
+    -fx-background-color: #3A3534;
+    -fx-background-radius: 12px;
+    -fx-padding: 15;
+}
+
+.friend-item {
+    -fx-padding: 8 20;
+    -fx-alignment: center-left;
+    -fx-spacing: 10;
+}
+
+.all-friends-btn {
+    -fx-background-color: #3A3534;
+    -fx-text-fill: #5AA94D;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-padding: 5 20;
+    -fx-margin: 0 20;
+}
+
+.banner-card {
+    -fx-background-color: #4A4443;
+    -fx-background-radius: 10px;
+    -fx-padding: 20;
+    -fx-alignment: center;
+}
+
+.build-card {
+    -fx-background-color: #3A3534;
+    -fx-background-radius: 10px;
+    -fx-padding: 15;
+    -fx-pref-width: 150;
+    -fx-alignment: center;
+}

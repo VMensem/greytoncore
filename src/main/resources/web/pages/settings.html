@@ -1,0 +1,77 @@
+<section id="settings" class="page" data-page="settings">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Настройки лаунчера</div>
+            <div class="card-subtitle">Параметры запуска, выделение памяти и пути к файлам</div>
+        </div>
+        <div class="settings-list mt-16">
+            <div class="settings-row">
+                <div class="settings-info">
+                    <div class="settings-title">Выбранная версия / сборка</div>
+                    <div class="settings-description">Сборка Minecraft, которая будет запущена по кнопке Играть</div>
+                </div>
+                <select class="input" style="max-width: 220px;" data-setting="selectedVersion" id="settings-version">
+                    <option value="Pura Lite">Pura Lite (Оптимально)</option>
+                    <option value="Pura Plus">Pura Plus (Шейдеры)</option>
+                    <option value="Pura Ultra">Pura Ultra (Максимум)</option>
+                    <option value="26.2">26.2 (Vanilla)</option>
+                </select>
+            </div>
+            <div class="settings-row">
+                <div class="settings-info">
+                    <div class="settings-title">Выделение оперативной памяти (RAM)</div>
+                    <div class="settings-description">Рекомендуется от 4G до 8G для комфортной игры</div>
+                </div>
+                <select class="input" style="max-width: 220px;" data-setting="maxMemory" id="settings-memory">
+                    <option value="2G">2 GB</option>
+                    <option value="4G">4 GB</option>
+                    <option value="6G">6 GB</option>
+                    <option value="8G">8 GB</option>
+                    <option value="10G">10 GB</option>
+                    <option value="12G">12 GB</option>
+                    <option value="16G">16 GB</option>
+                </select>
+            </div>
+            <div class="settings-row">
+                <div class="settings-info">
+                    <div class="settings-title">Папка с файлами игры</div>
+                    <div class="settings-description">Расположение модов, конфигов и сохранений Minecraft</div>
+                </div>
+                <div class="flex gap-8" style="max-width: 380px; width: 100%;">
+                    <input type="text" class="input" data-setting="gameDir" id="settings-gamedir" placeholder="%APPDATA%/PuraLauncher">
+                    <button type="button" class="secondary-button" onclick="if(window.launcher && launcher.openGameDir) launcher.openGameDir();" title="Открыть в проводнике">📁</button>
+                </div>
+            </div>
+            <div class="settings-row">
+                <div class="settings-info">
+                    <div class="settings-title">Использовать свою Java</div>
+                    <div class="settings-description">Включите, если хотите указать конкретную установленную Java</div>
+                </div>
+                <label class="flex align-center gap-8">
+                    <input type="checkbox" data-setting="useCustomJava" id="settings-use-custom-java">
+                    <span class="text-secondary font-bold">Своя Java</span>
+                </label>
+            </div>
+            <div class="settings-row">
+                <div class="settings-info">
+                    <div class="settings-title">Путь к исполняемому файлу Java</div>
+                    <div class="settings-description">Путь к java.exe или javaw.exe</div>
+                </div>
+                <input type="text" class="input" style="max-width: 380px;" data-setting="javaPath" id="settings-javapath" placeholder="C:\Program Files\Java\...\java.exe">
+            </div>
+            <div class="settings-row">
+                <div class="settings-info">
+                    <div class="settings-title">Дополнительные аргументы JVM</div>
+                    <div class="settings-description">Дополнительные флаги сборщика мусора и оптимизации</div>
+                </div>
+                <input type="text" class="input" style="max-width: 380px;" data-setting="extraJvmArgs" id="settings-jvmargs" placeholder="-XX:+UseG1GC">
+            </div>
+        </div>
+        <div class="flex justify-between align-center mt-24 pt-16" style="border-top: 1px solid var(--border-color);">
+            <span class="text-muted" style="font-size: 11px;">Все изменения сохраняются в конфигурационный файл лаунчера.</span>
+            <button type="button" class="play-button" data-action="save-settings" style="min-width: 190px;">
+                💾 Сохранить настройки
+            </button>
+        </div>
+    </div>
+</section>

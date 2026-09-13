@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Classes\pura-launcher]
+@="URL:PuraLauncher Protocol"
+"URL Protocol"=""
+
+[HKEY_CURRENT_USER\Software\Classes\pura-launcher\shell]
+
+[HKEY_CURRENT_USER\Software\Classes\pura-launcher\shell\open]
+
+[HKEY_CURRENT_USER\Software\Classes\pura-launcher\shell\open\command]
+@="\"C:\\hueta\\FireWorld\\PuraLauncher\\Pura.exe\" \"%1\""

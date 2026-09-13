@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pura Launcher — FireWorld</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .is-auth #app-shell { display: none !important; }
+        .is-auth #main-content-auth { display: block; }
+        #main-content-auth { display: none; }
+    </style>
+</head>
+<body class="is-auth">
+    <!-- Custom Title Bar with Window Controls -->
+    <header class="title-bar" id="title-bar">
+        <div class="logo-container">
+            <img src="assets/logo2.png" alt="Pura Logo" class="title-logo" style="width: 24px; height: 24px;">
+            <span class="title-text">Pura Launcher</span>
+        </div>
+        <div class="window-controls">
+            <button type="button" class="control-btn" data-window-action="minimize" onclick="if(window.launcher) launcher.minimize();" title="Свернуть">➖</button>
+            <button type="button" class="control-btn close" data-window-action="close" onclick="if(window.launcher) launcher.close();" title="Закрыть">❌</button>
+        </div>
+    </header>
+
+    <!-- Main Shell -->
+    <div class="app-shell" id="app-shell">
+        <div class="shell" id="app">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <div class="brand">
+                    <div class="brand-logo"><img src="assets/logo2.png" alt="Pura Logo"></div>
+                    <div class="brand-info">
+                        <div class="brand-name">Pura Launcher        </div>
+                        <div class="brand-subtitle">GreytonCore Team </div>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="section-label">Навигация</div>
+                    <a href="pages/home.html" style="text-decoration: none;"><button type="button" class="menu-btn active" data-nav="home" data-page-link="home">
+                        <span class="menu-icon"><img src="assets/home.png" style="width: 16px; height: 16px;"></span>
+                        <span class="menu-label">Главная</span>
+                    </button></a>
+                    <a href="pages/profile.html" style="text-decoration: none;">
+                        <button type="button" class="menu-btn" data-nav="profile" data-page-link="profile">
+                        <span class="menu-icon"><img src="assets/profile.png" style="width: 16px; height: 16px;"></span>
+                        <span class="menu-label">Профиль</span>
+                    </button></a>
+                    <a href="pages/statistics.html" style="text-decoration: none;">
+                        <button type="button" class="menu-btn" data-nav="statistics" data-page-link="statistics">
+                        <span class="menu-icon"><img src="assets/statistic.png" style="width: 16px; height: 16px;"></span>
+                        <span class="menu-label">Статистика</span>
+                        </button></a>
+                    <a href="pages/news.html" style="text-decoration: none;">
+                        <button type="button" class="menu-btn" data-nav="news" data-page-link="news">
+                        <span class="menu-icon"><img src="assets/news.png" style="width: 16px; height: 16px;"></span>
+                        <span class="menu-label">Новости</span>
+                    </button></a>
+                    <a href="pages/settings.html" style="text-decoration: none;">
+                        <button type="button" class="menu-btn" data-nav="settings" data-page-link="settings">
+                        <span class="menu-icon"><img src="assets/settings.png" style="width: 16px; height: 16px;"></span>
+                        <span class="menu-label">Настройки</span>
+                    </button></a>
+                </nav>
+
+                <div class="friends-section" style="margin-top: 20px;">
+                    <div class="section-label" style="padding-left: 13px;">Друзья</div>
+                    <div class="friends-list" id="friends-list" style="display: flex; flex-direction: column; gap: 4px; padding: 0 5px;">
+                        <!-- Friends will be loaded here -->
+                        <div class="friend-item">
+                            <img src="assets/default-skin.png" alt="Friend" class="friend-avatar">
+                            <span class="friend-name">Друг 1</span>
+                        </div>
+                        <div class="friend-item">
+                            <img src="assets/default-skin.png" alt="Friend" class="friend-avatar">
+                            <span class="friend-name">Друг 2</span>
+                        </div>
+                        <div class="friend-item">
+                            <img src="assets/default-skin.png" alt="Friend" class="friend-avatar">
+                            <span class="friend-name">Друг 3</span>
+                        </div>
+                        <div class="friend-item">
+                            <img src="assets/default-skin.png" alt="Friend" class="friend-avatar">
+                            <span class="friend-name">Друг 4</span>
+                        </div>
+                        <div class="friend-item">
+                            <img src="assets/default-skin.png" alt="Friend" class="friend-avatar">
+                            <span class="friend-name">Друг 5</span>
+                        </div>
+                    </div>
+                    <button type="button" class="menu-btn" style="margin-top: 10px;">Все друзья</button>
+                </div>
+
+                <div class="sidebar-bottom">
+                    <div class="sidebar-version">v2.0</div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="main">
+                <!-- Top Bar with User Header & Status -->
+                <div class="topbar">
+                    <div class="page-heading">
+                        <h1 class="page-title" id="page-title-text">   Главная</h1>
+                        <div class="page-description">   Официальный лаунчер Greyton Core</div>
+                    </div>
+
+                    <div class="flex align-center gap-16">
+                        <div class="profile-menu">
+                            <button type="button" class="profile-button" id="profile-button">
+                                <div class="profile-avatar" id="profile-avatar">
+                                    <img src="assets/logo.jpg" alt="Avatar" id="account-avatar">
+                                </div>
+                                <span class="profile-name" id="profile-name">Игрок</span>
+                                <span class="profile-arrow">▾</span>
+                            </button>
+
+                            <div class="profile-dropdown" id="profile-dropdown" hidden>
+                                <div class="profile-dropdown__mark" aria-hidden="true"></div>
+                                <div class="profile-dropdown__head">
+                                    <canvas class="profile-dropdown__avatar" width="95" height="95" aria-hidden="true"></canvas>
+                                    <div class="profile-dropdown-info">
+                                        <div class="profile-dropdown-name" id="profile-nickname">Игрок</div>
+                                        <div class="profile-dropdown-role" id="profile-role">Оффлайн</div>
+                                    </div>
+                                </div>
+                                <button type="button" class="profile-dropdown-item" data-action="profile">
+                                    <span class="profile-dropdown-item-icon"><img src="assets/profile.png" style="width: 16px; height: 16px;"></span> Профиль
+                                </button>
+                                <button type="button" class="profile-dropdown-item" data-action="settings">
+                                    <span class="profile-dropdown-item-icon"><img src="assets/settings.png" style="width: 16px; height: 16px;"></span> Настройки
+                                </button>
+                                <div class="divider"></div>
+                                <button type="button" class="profile-dropdown-item danger" data-action="logout">
+                                    <span class="profile-dropdown-item-icon"><img src="assets/logout.png" style="width: 16px; height: 16px;"></span> Выйти
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-content" id="main-content">
+                    <!-- Dynamic Page Fragments will load here -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Loading Overlay with Progress -->
+    <div id="loading-overlay" class="loading-overlay" hidden>
+        <div class="loading-box">
+            <div class="spinner"></div>
+            <div class="loading-text" id="loading-text">Загрузка...</div>
+            <div class="progress" style="width: 240px; height: 6px;">
+                <div class="progress-bar loading-progress" style="width: 0%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Modal Window -->
+    <div id="modal" class="modal-overlay" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">Внимание</h3>
+                <button type="button" class="modal-close" data-modal-close>✕</button>
+            </div>
+            <div class="modal-content" id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Application JavaScript -->
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+
+</body>
+</html>
